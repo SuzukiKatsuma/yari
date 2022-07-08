@@ -32,7 +32,7 @@ export function getFirstMatchInText(needle, haystack) {
   return { line, column };
 }
 
-function replaceMatchingLinksInMarkdown(needle, haystack, replacement) {
+export function replaceMatchingLinksInMarkdown(needle, haystack, replacement) {
   // Need to remove any characters that can affect a regex if we're going
   // use the string in a manually constructed regex.
   const escaped = needle.replace(ESCAPE_CHARS_RE, "\\$&");
