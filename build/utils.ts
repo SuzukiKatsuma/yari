@@ -13,7 +13,7 @@ const sanitizeFilename = require("sanitize-filename");
 
 const { VALID_MIME_TYPES } = require("../libs/constants");
 
-function humanFileSize(size) {
+export function humanFileSize(size) {
   if (size < 1024) return `${size} B`;
   const i = Math.floor(Math.log(size) / Math.log(1024));
   const num = size / 1024 ** i;
