@@ -446,17 +446,11 @@ export async function buildDocument(
       doc.flaws.macros = flaws.map((flaw: any, i) => {
         let fixable = false;
         let suggestion: string | null = null;
-        const isMacroDeprecatedError = (flaw): flaw is MacroDeprecatedError =>
-          flaw.name === "MacroDeprecatedError";
-        const isMacroRedirectedLinkError = (
-          flaw
-        ): flaw is MacroRedirectedLinkError =>
-          flaw.name === "MacroRedirectedLinkError";
-        if (isMacroDeprecatedError(flaw)) {
+        if (flaw.name === "MacroDeprecatedError") {
           fixable = true;
           suggestion = "";
         } else if (
-          isMacroRedirectedLinkError(flaw) &&
+          flaw.name === "MacroRedirectedLinkError" &&
           (!(flaw as MacroRedirectedLinkError).filepath ||
             (flaw as MacroRedirectedLinkError).filepath ===
               document.fileInfo.path)
